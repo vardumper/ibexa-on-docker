@@ -1,0 +1,40 @@
+{
+  "name": "vardumper/ibexa-experience-docker",
+  "description": "Containerized Ibexa Experience",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Erik Pöhler",
+      "email": "erik.poehler@fork.de"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "composer/installers": "^2.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "symfony/flex": true,
+      "php-http/discovery": true,
+      "symfony/runtime": true,
+      "ibexa/post-install": true
+    }
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": true
+    },
+    "symfony-skeleton": {
+      "config": {
+        "preferred-install": "dist"
+      }
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://updates.ibexa.co"
+    }
+  ]
+}
