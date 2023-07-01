@@ -1,2 +1,8 @@
-/site/
+# ibexa
+/site/vendor
+/site/docker-compose.yml
+/site/docker-compose.override.yml
+
+# root
 /vendor/
+/volumes/*

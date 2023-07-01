@@ -1,6 +1,7 @@
 # Dockerized Ibexa DXP
 
 This is a highly opinionated approach to setting up Ibexa DXP inside Dokcer.
+Ibexa will be installed into a `site/` directory.
 
 ## Requirements
 
@@ -16,15 +17,15 @@ docker-compose up -d # this will start the containers
 
 ## Whats included
 
-We're using
+As a personal preference I am using the bitnami images for Nginx, PHP and MariaDB.
 
-- PHP 8.2
-- MariaDB 10.8
-- Nginx
+- PHP-FPM v8.2
+- MariaDB v10.8
+- Nginx v1.21
 
 ## Accessing the site
 
-localhost:8880
+http://localhost:8080
 
 ## Making adjustments
 

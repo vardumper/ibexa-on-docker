@@ -1,13 +1,41 @@
 version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
+  php:
+    container_name: ibexa-php
+    image: bitnami/php-fpm:8.2.7
+    # build: ./docker/php
+    networks:
+      - ibexa
+    depends_on:
+      - database
+    volumes:
+      - ./site/:/var/www/html
+      - ./docker/php/override.ini:/opt/bitnami/php/conf.d/override.ini
+
+  nginx:
+    container_name: ibexa-nginx
+    image: bitnami/nginx:1.24.0
+    networks:
+      - ibexa
+    volumes:
+      - ./site/:/var/www/html
+      - ./docker/nginx/default.conf:/opt/bitnami/nginx/conf.d/default.conf
+    ports:
+      - '8080:80'
+    links:
+      - php
+
+  ###> doctrine/doctrine-bundle ###
   database:
+    container_name: ibexa-database
     image: docker.io/bitnami/mariadb:10.8
+    networks:
+      - ibexa
     ports:
       - 33060:3306
     volumes:
-      - database_data:/bitnami/mariadb:Z
+      - ./volumes/mariadb_data:/bitnami/mariadb:Z
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=ibexa
@@ -21,7 +49,20 @@ services:
 
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      ###< doctrine/doctrine-bundle ###
+
+  redis:
+    container_name: ibexa-redis
+    image: docker.io/bitnami/redis:6.2.12
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    networks:
+      - ibexa
+    ports:
+      - '63790:6379'
+    volumes:
+      - ./volumes/redis_data:/bitnami/redis/data:Z
 
 volumes:
 ###> doctrine/doctrine-bundle ###
