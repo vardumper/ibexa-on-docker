@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+###> doctrine/doctrine-bundle ###
+  database:
+    image: docker.io/bitnami/mariadb:10.8
+    ports:
+      - 33060:3306
+    volumes:
+      - database_data:/bitnami/mariadb:Z
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=ibexa
+      - MARIADB_PASSWORD=ibexa
+      - MARIADB_DATABASE=ibexa
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mariadb/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
+
+networks:
+  ibexa:
+    driver: bridge
