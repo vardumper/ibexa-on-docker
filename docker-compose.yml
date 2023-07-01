@@ -10,8 +10,9 @@ services:
     depends_on:
       - database
     volumes:
-      - ./site/:/var/www/html
+      - ./site:/var/www/html
       - ./docker/php/override.ini:/opt/bitnami/php/conf.d/override.ini
+      - application_data:/var/www/html/data
 
   nginx:
     container_name: ibexa-nginx
@@ -19,8 +20,8 @@ services:
     networks:
       - ibexa
     volumes:
-      - ./site/:/var/www/html
-      - ./docker/nginx/default.conf:/opt/bitnami/nginx/conf.d/default.conf
+      - ./site:/var/www/html
+      - ./docker/nginx/default.conf:/opt/bitnami/nginx/conf/server_blocks/default.conf
     ports:
       - '8080:80'
     links:
@@ -67,6 +68,7 @@ services:
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
+  application_data:
 ###< doctrine/doctrine-bundle ###
 
 networks:
