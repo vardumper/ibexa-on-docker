@@ -23,8 +23,12 @@ See the official documentation, on how to get your credentials: https://doc.ibex
 ```bash
 composer install # this will install Ibexa DXP into site/ directory
 docker-compose up -d # this will start the containers
-docker exec ibexa-php /bin/bash -c "cd /var/www/html;php bin/console ibexa:install" # to finalize the setup
+docker exec ibexa-php /bin/bash -c "cd /var/www/html;php bin/console ibexa:install" # finalizes the setup
 ```
+
+## Accessing the site
+
+http://localhost:8080
 
 ## Whats included
 
@@ -34,10 +38,6 @@ As a personal preference I am using the bitnami images for Nginx, PHP and MariaD
 - MariaDB v10.8.8
 - Nginx v1.24.0
 - Redis v6.2
-
-## Accessing the site
-
-http://localhost:8080
 
 ## Making adjustments
 
