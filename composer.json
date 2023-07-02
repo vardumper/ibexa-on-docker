@@ -35,7 +35,8 @@
     "install-ibexa": [
       "[ -d 'site' ] || COMPOSER_PROCESS_TIMEOUT=600 composer create-project --prefer-dist ibexa/experience-skeleton site",
       "[ -f 'site/docker-compose.yml' ] || rm site/docker-compose.yml",
-      "[ -f 'site/docker-compose.override.yml' ] || rm site/docker-compose.override.yml"
+      "[ -f 'site/docker-compose.override.yml' ] || rm site/docker-compose.override.yml",
+      "[ -f 'site/.env' ] || rm site/.env && cp .env.docker site/.env.local"
     ],
     "post-install-cmd": [
       "@install-ibexa"
