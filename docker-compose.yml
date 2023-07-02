@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 
 services:
   php:
@@ -11,7 +11,7 @@ services:
       - database
     volumes:
       - ./site:/var/www/html
-      - ./docker/php/override.ini:/opt/bitnami/php/conf.d/override.ini
+      - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
       - application_data:/var/www/html/data
 
   nginx:

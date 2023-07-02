@@ -1,0 +1,11 @@
+{
+  "http-basic": {
+    "updates.ibexa.co": {
+      "username": "<installation-key>",
+      "password": "<token-password>"
+    }
+  },
+  "github-oauth": {
+    "github.com": "<github-token>"
+  }
+}
