@@ -30,9 +30,9 @@ docker exec ibexa-php /bin/bash -c "cd /var/www/html;php bin/console ibexa:insta
 
 As a personal preference I am using the bitnami images for Nginx, PHP and MariaDB.
 
-- PHP-FPM v8.2
-- MariaDB v10.8
-- Nginx v1.21
+- PHP-FPM v8.2.7
+- MariaDB v10.8.8
+- Nginx v1.24.0
 - Redis v6.2
 
 ## Accessing the site
