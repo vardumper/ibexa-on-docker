@@ -4,7 +4,7 @@ services:
   php:
     container_name: ibexa-php
     image: bitnami/php-fpm:8.2.7
-    # build: ./docker/php
+    build: ./docker/php
     networks:
       - ibexa
     depends_on:
@@ -12,11 +12,11 @@ services:
     volumes:
       - ./app:/app
       - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
-      # - application_data:/app/var
 
   nginx:
     container_name: ibexa-nginx
     image: bitnami/nginx:1.24.0
+    build: ./docker/nginx
     networks:
       - ibexa
     volumes:
@@ -65,10 +65,22 @@ services:
     volumes:
       - ./volumes/redis_data:/bitnami/redis/data:Z
 
+  ### elastic
+  elasticsearch:
+    image: docker.io/bitnami/elasticsearch:8
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - elasticsearch_data:/bitnami/elasticsearch/data
+    networks:
+      - ibexa
+  ### end elastic
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
-  # application_data:
+  elasticsearch_data:
 ###< doctrine/doctrine-bundle ###
 
 networks:

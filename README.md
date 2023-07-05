@@ -1,7 +1,7 @@
 # Ibexa DXP on Docker
 
-This sets up your Ibexa DXP project with Composer and includes a pre-configured Dokcer setup.
-To avoid having mutliple levels of composer.jsons and .envs Ibexa will be installed into the projects root directory.
+This helper repository sets up a new Ibexa DXP project for you with a pre-made Dokcer configuration to get you started quicker.
+Ibexa will be installed in the latest version from the official meta packages. it will reside in the app folder.
 
 ## Requirements
 
@@ -11,19 +11,28 @@ To avoid having mutliple levels of composer.jsons and .envs Ibexa will be instal
 ## Getting started
 
 During installation, you will be prompted to enter your Ibexa credentials. You can get them in Ibexa's [support panel](https://support.ibexa.co).
-The official documentation has [more details on credemtails](https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials), too.
-
-**TLDR:**
+The official documentation has [more details on credentials](https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials).
 
 - Recommended option: Store your Ibexa credentials globally `composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>`
-- Alternative option: Edit auth.dist.json file and save it as auth.json
+- Alternatively, edit the auth.dist.json and save it as auth.json
 
 ## Installation
 
+**Step 1**: Pick one flavour of Ibexa. Exceute one of the following commands:
+
+```
+composer create-project vardumper/ibexa-on-docker <my-folder> # Installs Ibexa DXP Open Source (default)
+composer create-project vardumper/ibexa-on-docker:dev-experience <my-folder> # Installs Ibexa DXP Experience
+composer create-project vardumper/ibexa-on-docker:dev-commerce <my-folder> # Installs Ibexa DXP Commerce
+composer create-project vardumper/ibexa-on-docker:dev-content <my-folder> # Installs Ibexa DXP Content
+```
+
+**Step 2**: Start the containers and initilize the database
+
 ```bash
-composer create-project vardumper/ibexa-on-docker:"<flavour>" # if omitted, defaults to OSS
+cd <my-folder> # change into the project folder
 docker-compose up -d # this will start the containers
-docker exec ibexa-php /bin/bash -c "cd /var/www/html;php bin/console ibexa:install" # finalizes the setup
+docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # finalizes the setup
 ```
 
 ## Accessing the site
