@@ -25,7 +25,8 @@
       "@php -r \"file_exists('app/docker-compose.yml') || unlink('app/docker-compose.yml');\"",
       "@php -r \"file_exists('app/docker-compose.override.yml') || unlink('app/docker-compose.override.yml');\"",
       "@php -r \"unlink('app/.env');\"",
-      "@php -r \"copy('.env.dist', 'app/.env.dev');\"",
+      "@php -r \"copy('.env.dev', 'app/.env.dev');\"",
+      "@php -r \"unlink('.env.dev');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\""
     ],
