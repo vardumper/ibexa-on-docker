@@ -46,7 +46,7 @@
         "source" : {
           "url" : "https://github.com/vardumper/ibexa-on-docker",
           "type" : "git",
-          "reference" : "main"
+          "reference" : "origin/main"
         }
       }
     },
@@ -58,7 +58,7 @@
         "source" : {
           "url" : "https://github.com/vardumper/ibexa-on-docker",
           "type" : "git",
-          "reference" : "content"
+          "reference" : "origin/content"
         }
       }
     },
@@ -70,9 +70,20 @@
         "source" : {
           "url" : "https://github.com/vardumper/ibexa-on-docker",
           "type" : "git",
-          "reference" : "commerce"
+          "reference" : "origin/commerce"
         }
       }
     },
-
+    {
+      "type" : "package",
+      "package" : {
+        "name" : "vardumper/ibexa-on-docker",
+        "version" : "experience",
+        "source" : {
+          "url" : "https://github.com/vardumper/ibexa-on-docker",
+          "type" : "git",
+          "reference" : "origin/experience"
+        }
+      }
+    }
 }
