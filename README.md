@@ -1,7 +1,7 @@
 # Dockerized Ibexa DXP
 
 This is a highly opinionated approach to setting up Ibexa DXP inside Dokcer.
-Ibexa will be installed into a `site/` directory.
+Ibexa will be installed into a `ibexa/` directory.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ See the official documentation, on how to get your credentials: https://doc.ibex
 ## Installation
 
 ```bash
-composer install # this will install Ibexa DXP into site/ directory
+composer create-project vardumper/ibexa-on-docker:"<flavour>"
 docker-compose up -d # this will start the containers
 docker exec ibexa-php /bin/bash -c "cd /var/www/html;php bin/console ibexa:install" # finalizes the setup
 ```

@@ -10,7 +10,7 @@ services:
     depends_on:
       - database
     volumes:
-      - ./site:/var/www/html
+      - ./ibexa:/var/www/html
       - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
       - application_data:/var/www/html/data
 
@@ -20,7 +20,7 @@ services:
     networks:
       - ibexa
     volumes:
-      - ./site:/var/www/html
+      - ./ibexa:/var/www/html
       - ./docker/nginx/default.conf:/opt/bitnami/nginx/conf/server_blocks/default.conf
     ports:
       - '8080:80'

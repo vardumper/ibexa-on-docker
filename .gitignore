@@ -1,7 +1,7 @@
 # ibexa
-/site/vendor
-/site/docker-compose.yml
-/site/docker-compose.override.yml
+/ibexa/vendor
+/ibexa/docker-compose.yml
+/ibexa/docker-compose.override.yml
 
 # root
 /vendor/
