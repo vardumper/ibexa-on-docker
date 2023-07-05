@@ -1,6 +1,6 @@
 {
-  "name": "vardumper/ibexa-experience-docker",
-  "description": "Containerized Ibexa Experience",
+  "name": "vardumper/ibexa-on-docker",
+  "description": "Ibexa on Docker",
   "type": "project",
   "authors": [
     {
@@ -8,10 +8,8 @@
       "email": "erik.poehler@fork.de"
     }
   ],
-  "minimum-stability": "stable",
-  "require": {
-    "composer/installers": "^2.2"
-  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "config": {
     "allow-plugins": {
       "composer/installers": true,
@@ -21,27 +19,17 @@
       "ibexa/post-install": true
     }
   },
-  "extra": {
-    "symfony": {
-      "allow-contrib": true
-    },
-    "symfony-skeleton": {
-      "config": {
-        "preferred-install": "dist"
-      }
-    }
-  },
   "scripts": {
     "install-ibexa": [
-      "[ -d 'site' ] || COMPOSER_PROCESS_TIMEOUT=600 composer create-project --prefer-dist ibexa/experience-skeleton site",
-      "[ -f 'site/docker-compose.yml' ] || rm site/docker-compose.yml",
-      "[ -f 'site/docker-compose.override.yml' ] || rm site/docker-compose.override.yml",
-      "[ -f 'site/.env.dev' ] || rm site/.env && cp .env.docker site/.env.dev"
+      "@php -r \"is_dir('ibexa') || COMPOSER_PROCESS_TIMEOUT=600 composer create-project --prefer-dist ibexa/oss-skeleton ibexa",
+      "@php -r \"file_exists('ibexa/docker-compose.yml') || unlink('ibexa/docker-compose.yml');\"",
+      "@php -r \"file_exists('ibexa/docker-compose.override.yml') || unlink('ibexa/docker-compose.override.yml');\"",
+      "@php -r \"file_exists('ibexa/.env') || unlink('ibexa/.env');\"",
+      "@php -r \"file_exists('ibexa/.env.dev') || unlink('ibexa/.env.dev) && copy('.env.dist', 'ibexa/.env.dev');\"",
+      "@php -r \"unlink('composer.json');\"",
+      "@php -r \"unlink('composer.lock');\""
     ],
-    "post-install-cmd": [
-      "@install-ibexa"
-    ],
-    "post-update-cmd": [
+    "post-create-project-cmd": [
       "@install-ibexa"
     ]
   },
@@ -49,6 +37,10 @@
     {
       "type": "composer",
       "url": "https://updates.ibexa.co"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/vardumper/ibexa-on-docker/"
     }
   ]
 }
