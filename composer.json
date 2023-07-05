@@ -21,7 +21,7 @@
   },
   "scripts": {
     "install-ibexa": [
-      "@php -r \"is_dir('ibexa') || COMPOSER_PROCESS_TIMEOUT=600 composer create-project --prefer-dist ibexa/oss-skeleton ibexa",
+      "COMPOSER_PROCESS_TIMEOUT=600 composer create-project --prefer-dist ibexa/oss-skeleton .",
       "@php -r \"file_exists('ibexa/docker-compose.yml') || unlink('ibexa/docker-compose.yml');\"",
       "@php -r \"file_exists('ibexa/docker-compose.override.yml') || unlink('ibexa/docker-compose.override.yml');\"",
       "@php -r \"file_exists('ibexa/.env') || unlink('ibexa/.env');\"",
