@@ -12,7 +12,7 @@ services:
     volumes:
       - ./app:/app
       - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
-      - application_data:/var/www/html/data
+      # - application_data:/app/var
 
   nginx:
     container_name: ibexa-nginx
@@ -68,7 +68,7 @@ services:
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
-  application_data:
+  # application_data:
 ###< doctrine/doctrine-bundle ###
 
 networks:

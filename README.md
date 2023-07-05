@@ -10,8 +10,8 @@ To avoid having mutliple levels of composer.jsons and .envs Ibexa will be instal
 
 ## Getting started
 
-During installation, you will be prompted to enter your Ibexa credentials. You can find these in the support.ibexa.co portal.
-See the official documentation, on how to get your credentials: https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials
+During installation, you will be prompted to enter your Ibexa credentials. You can get them in Ibexa's [support panel](https://support.ibexa.co).
+The official documentation has [more details on credemtails](https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials), too.
 
 **TLDR:**
 
