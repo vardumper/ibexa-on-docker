@@ -24,7 +24,8 @@
       "COMPOSER_PROCESS_TIMEOUT=600 COMPOSER_POOL_OPTIMIZER=0 COMPOSER_MEMORY_LIMIT=-1 composer create-project --prefer-dist ibexa/oss-skeleton app",
       "@php -r \"file_exists('app/docker-compose.yml') || unlink('app/docker-compose.yml');\"",
       "@php -r \"file_exists('app/docker-compose.override.yml') || unlink('app/docker-compose.override.yml');\"",
-      "@php -r \"copy('.env.dev', 'app/.env.dev');\"",
+      "@php -r \"unlink('app/.env');\"",
+      "@php -r \"copy('.env.dev', 'app/.env');\"",
       "@php -r \"unlink('.env.dev');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\""
