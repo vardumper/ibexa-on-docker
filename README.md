@@ -1,6 +1,6 @@
-# Dockerized Ibexa DXP
+# Ibexa DXP on Docker
 
-This is a highly opinionated approach to setting up Ibexa DXP inside Dokcer.
+This sets up your Ibexa DXP project with Composer and includes a pre-configured Dokcer setup.
 To avoid having mutliple levels of composer.jsons and .envs Ibexa will be installed into the projects root directory.
 
 ## Requirements
