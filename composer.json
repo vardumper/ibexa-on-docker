@@ -39,8 +39,40 @@
       "url": "https://updates.ibexa.co"
     },
     {
-      "type": "vcs",
-      "url": "https://github.com/vardumper/ibexa-on-docker/"
-    }
-  ]
+      "type" : "package",
+      "package" : {
+        "name" : "vardumper/ibexa-on-docker",
+        "version" : "oss",
+        "source" : {
+          "url" : "https://github.com/vardumper/ibexa-on-docker",
+          "type" : "git",
+          "reference" : "main"
+        }
+      }
+    },
+    {
+      "type" : "package",
+      "package" : {
+        "name" : "vardumper/ibexa-on-docker",
+        "version" : "content",
+        "source" : {
+          "url" : "https://github.com/vardumper/ibexa-on-docker",
+          "type" : "git",
+          "reference" : "content"
+        }
+      }
+    },
+    {
+      "type" : "package",
+      "package" : {
+        "name" : "vardumper/ibexa-on-docker",
+        "version" : "commerce",
+        "source" : {
+          "url" : "https://github.com/vardumper/ibexa-on-docker",
+          "type" : "git",
+          "reference" : "commerce"
+        }
+      }
+    },
+
 }
