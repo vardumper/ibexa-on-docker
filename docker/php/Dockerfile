@@ -10,5 +10,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 COPY --from=node:18-slim /usr/local/bin /usr/local/bin
 # Get npm
 COPY --from=node:18-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
-
-RUN npm install -g yarn
+#RUN which npm
+#RUN npm install -g yarn

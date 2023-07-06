@@ -12,6 +12,7 @@ services:
     volumes:
       - ./app:/app
       - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
+    command: "sh -c 'npm install yarn'"
 
   nginx:
     container_name: ibexa-nginx
