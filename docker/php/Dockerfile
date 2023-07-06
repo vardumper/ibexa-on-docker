@@ -3,10 +3,12 @@ FROM docker.io/bitnami/minideb:bullseye
 ENV APP_VERSION="8.2.7"
 ENV PHP_MEMORY_LIMIT="512M"
 
-# let's stick to a modern, but not bleeding edge version
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
-    apt-get install -y nodejs
-RUN npm install -g yarn
-
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
+# Get NodeJS
+COPY --from=node:18-slim /usr/local/bin /usr/local/bin
+# Get npm
+COPY --from=node:18-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
+
+RUN npm install -g yarn
