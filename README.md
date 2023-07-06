@@ -32,6 +32,7 @@ composer create-project vardumper/ibexa-on-docker:dev-content <my-folder> # Inst
 ```bash
 cd <my-folder> # change into the project folder
 docker-compose up -d # this will start the containers
+docker exec ibexa-php /bin/bash -c "cd /app;php bin/console secrets:generate-keys" # generates app secrets
 docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # finalizes the setup
 ```
 

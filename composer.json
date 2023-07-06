@@ -25,10 +25,15 @@
       "@php -r \"file_exists('app/docker-compose.yml') || unlink('app/docker-compose.yml');\"",
       "@php -r \"file_exists('app/docker-compose.override.yml') || unlink('app/docker-compose.override.yml');\"",
       "@php -r \"unlink('app/.env');\"",
+      "@php -r \"unlink('app/config/packages/cache.yaml');\"",
+      "@php -r \"copy('config/cache.yaml', 'app/config/packages/cache.yaml');\"",
+      "@php -r \"unlink('config/cache.yaml');\"",
+      "@php -r \"rmdir('config');\"",
       "@php -r \"copy('.env.dev', 'app/.env');\"",
       "@php -r \"unlink('.env.dev');\"",
       "@php -r \"unlink('composer.json');\"",
-      "@php -r \"unlink('composer.lock');\""
+      "@php -r \"unlink('composer.lock');\"",
+      "cd app && git init"
     ],
     "post-create-project-cmd": [
       "@install-ibexa"
@@ -38,54 +43,6 @@
     {
       "type": "composer",
       "url": "https://updates.ibexa.co"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "vardumper/ibexa-on-docker",
-        "version": "oss",
-        "source": {
-          "url": "https://github.com/vardumper/ibexa-on-docker",
-          "type": "git",
-          "reference": "origin/main"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "vardumper/ibexa-on-docker",
-        "version": "content",
-        "source": {
-          "url": "https://github.com/vardumper/ibexa-on-docker",
-          "type": "git",
-          "reference": "origin/content"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "vardumper/ibexa-on-docker",
-        "version": "commerce",
-        "source": {
-          "url": "https://github.com/vardumper/ibexa-on-docker",
-          "type": "git",
-          "reference": "origin/commerce"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "vardumper/ibexa-on-docker",
-        "version": "experience",
-        "source": {
-          "url": "https://github.com/vardumper/ibexa-on-docker",
-          "type": "git",
-          "reference": "origin/experience"
-        }
-      }
     }
   ]
 }

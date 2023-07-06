@@ -1,0 +1,21 @@
+parameters:
+    cache_dsn: '%env(CACHE_DSN)%'
+
+framework:
+    cache:
+        # Unique name of your app: used to compute stable namespaces for cache keys.
+        prefix_seed: 'medac/corporate-website'
+
+        # The "app" cache stores to the filesystem by default.
+        # The data in this cache should persist between deploys.
+
+        # Redis
+        app: cache.adapter.redis
+        default_redis_provider: "%cache_dsn%"
+
+        # APCu (not recommended with heavy random-write workloads as memory fragmentation can cause perf issues)
+        #app: cache.adapter.apcu
+
+        # Namespaced pools use the above "app" backend by default
+        #pools:
+            #my.dedicated.cache: null
