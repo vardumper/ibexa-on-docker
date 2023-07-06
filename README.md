@@ -44,9 +44,10 @@ http://localhost:8080
 
 As a personal preference I am using the bitnami images for Nginx, PHP and MariaDB.
 
+- Nginx v1.24.0
 - PHP-FPM v8.2.7
 - MariaDB v10.8.8
-- Nginx v1.24.0
+- Elasticsearch v8.8.2
 - Redis v6.2
 
 ## Making adjustments
