@@ -1,14 +1,25 @@
-FROM docker.io/bitnami/minideb:bullseye
+FROM docker.io/bitnami/php-fpm:8.2.8
 
-ENV APP_VERSION="8.2.7"
 ENV PHP_MEMORY_LIMIT="512M"
+
+RUN apt update && apt upgrade -y
+RUN apt install --no-install-recommends wget unzip nano ${PHPIZE_DEPS} make cmake gcc g++ libpcre2-posix2 libpcre2-dev -yq
+
+# Haven't figured out the Redis part yet
+# ...
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Get NodeJS
-COPY --from=node:18-slim /usr/local/bin /usr/local/bin
-# Get npm
-COPY --from=node:18-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
-#RUN which npm
-#RUN npm install -g yarn
+# Install NodeJS and Yarn
+COPY --from=node:18.4 /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:18.4 /usr/local/include/node /usr/local/include/node
+COPY --from=node:18.4 /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node:18.4 /opt/yarn-v*/bin/* /usr/local/bin/
+COPY --from=node:18.4 /opt/yarn-v*/lib/* /usr/local/lib/
+
+# Copy entrypoint
+COPY --from=node /usr/local/bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+RUN ln --symbolic ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln --symbolic ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx

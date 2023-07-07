@@ -27,12 +27,13 @@ composer create-project vardumper/ibexa-on-docker:dev-commerce <my-folder> # Ins
 composer create-project vardumper/ibexa-on-docker:dev-content <my-folder> # Installs Ibexa DXP Content
 ```
 
-**Step 2**: Start the containers and initilize the database
+**Step 2**: Finalizing the installation
 
 ```bash
 cd <my-folder> # change into the project folder
 docker-compose up -d # this will start the containers
 docker exec ibexa-php /bin/bash -c "cd /app;php bin/console secrets:generate-keys" # generates app secrets
+docker exec ibexa-php /bin/bash -c "cd /app;composer req predis/predis" # installs predis
 docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # finalizes the setup
 ```
 
