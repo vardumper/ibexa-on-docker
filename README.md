@@ -1,7 +1,7 @@
 # Ibexa DXP on Docker
 
-This helper repository sets up a new Ibexa DXP project for you with a pre-made Dokcer configuration to get you started quicker.
-Ibexa will be installed in the latest version from the official meta packages. it will reside in the app folder.
+This helper repository sets up a new Ibexa DXP project for you with a pre-made Docker configuration to get you started quicker.
+The official Ibexa meta package installation is executed during install. Ibexa will be placed in the `app` folder. This repository acts as a wrapper that includes a docker development configuration around it.
 
 ## Requirements
 
