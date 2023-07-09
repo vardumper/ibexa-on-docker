@@ -58,3 +58,7 @@ As a personal preference I am using the bitnami images for Nginx, PHP and MariaD
 
 If you want to run the containers on different ports, you can do so by adjusting the docker-compose.yml file.
 If you want to use different container images, feel free to make your adjustments in the docker-compose.yml file, as well.
+
+## It's yours
+
+The project you just created is yours. It has already been initialized 
