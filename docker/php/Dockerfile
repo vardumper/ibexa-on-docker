@@ -3,8 +3,8 @@ FROM docker.io/bitnami/php-fpm:8.2.8
 ENV PHP_MEMORY_LIMIT="512M"
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install --no-install-recommends autoconf build-essential wget=1.21 unzip=6.00 nano=5.4 "${PHPIZE_DEPS}" make=4.3 cmake=3.18.4 gcc=10.2.1 g++=10.2.1 libpcre2-posix2 libpcre2-dev -yq
-
+RUN apt-get install --no-install-recommends autoconf build-essential wget=1.21 unzip=6.00 nano=5.4 ${PHPIZE_DEPS} make=4.3 libpcre2-posix2 libpcre2-dev -yq
+# cmake=3.18.4 gcc=10.2.1 g++=10.2.1
 RUN cd /root \
     && wget -nv https://pecl.php.net/get/redis-5.3.7.tgz \
     && tar xzf redis-5.3.7.tgz && cd redis-5.3.7 \
