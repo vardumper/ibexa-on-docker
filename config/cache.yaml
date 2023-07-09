@@ -4,7 +4,7 @@ parameters:
 framework:
     cache:
         # Unique name of your app: used to compute stable namespaces for cache keys.
-        prefix_seed: 'medac/corporate-website'
+        # prefix_seed: 'vendor/project-name'
 
         # The "app" cache stores to the filesystem by default.
         # The data in this cache should persist between deploys.
@@ -19,7 +19,3 @@ framework:
         # Namespaced pools use the above "app" backend by default
         #pools:
             #my.dedicated.cache: null
-
-services:
-    cache.adapter.redis:
-       public: true
