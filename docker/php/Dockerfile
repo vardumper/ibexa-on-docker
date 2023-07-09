@@ -15,8 +15,8 @@ RUN cd /root \
 RUN echo "extension=redis.so" >> /opt/bitnami/php/etc/php.ini
 
 # Install Composer
-FROM composer:latest AS comp
-COPY --from=comp /usr/bin/composer /usr/local/bin/composer
+FROM composer:lts AS composerlts
+COPY --from=composerlts /usr/bin/composer /usr/local/bin/composer
 
 # Install NodeJS and Yarn
 FROM node:18.4 AS nodejs
