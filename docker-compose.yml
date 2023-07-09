@@ -24,8 +24,6 @@ services:
       - ./docker/nginx/default.conf:/opt/bitnami/nginx/conf/server_blocks/default.conf
     ports:
       - '8080:80'
-    depends_on:
-      - php
     links:
       - php
 

@@ -15,19 +15,22 @@ RUN wget -nv https://pecl.php.net/get/redis-5.3.7.tgz \
 RUN echo "extension=redis.so" >> /opt/bitnami/php/etc/php.ini
 
 # Install Composer
+<<<<<<< Updated upstream
 FROM composer:latest AS comp
 COPY --from=comp /usr/bin/composer /usr/local/bin/composer
+=======
+COPY --from=library/composer /usr/bin/composer /usr/local/bin/composer
+>>>>>>> Stashed changes
 
 # Install NodeJS and Yarn
-FROM node:18.4 AS nodejs
-COPY --from=nodejs /usr/local/bin/node /usr/local/bin/node
-COPY --from=nodejs /usr/local/include/node /usr/local/include/node
-COPY --from=nodejs /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=nodejs /opt/yarn-v*/bin/* /usr/local/bin/
-COPY --from=nodejs /opt/yarn-v*/lib/* /usr/local/lib/
+COPY --from=library/node:18.4 /usr/local/bin/node /usr/local/bin/node
+COPY --from=library/node:18.4 /usr/local/include/node /usr/local/include/node
+COPY --from=library/node:18.4 /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=library/node:18.4 /opt/yarn-v*/bin/* /usr/local/bin/
+COPY --from=library/node:18.4 /opt/yarn-v*/lib/* /usr/local/lib/
 
 # Copy entrypoint
-COPY --from=nodejs /usr/local/bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY --from=library/node:18.4 /usr/local/bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN ln --symbolic ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
     && ln --symbolic ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
