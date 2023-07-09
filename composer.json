@@ -21,7 +21,7 @@
   },
   "scripts": {
     "install-ibexa": [
-      "COMPOSER_PROCESS_TIMEOUT=600 COMPOSER_POOL_OPTIMIZER=0 COMPOSER_MEMORY_LIMIT=-1 composer create-project --prefer-dist ibexa/commerce-skeleton app",
+      "COMPOSER_PROCESS_TIMEOUT=600 COMPOSER_POOL_OPTIMIZER=0 COMPOSER_MEMORY_LIMIT=-1 composer create-project --prefer-dist ibexa/content-skeleton app",
       "@php -r \"file_exists('app/docker-compose.yml') || unlink('app/docker-compose.yml');\"",
       "@php -r \"file_exists('app/docker-compose.override.yml') || unlink('app/docker-compose.override.yml');\"",
       "@php -r \"copy('app/.env', 'app/env.backup');\"",
