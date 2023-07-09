@@ -33,13 +33,14 @@ composer create-project vardumper/ibexa-on-docker:dev-content <my-folder> # Inst
 cd <my-folder> # change into the project folder
 docker-compose up -d # this will start the containers
 docker exec ibexa-php /bin/bash -c "cd /app;php bin/console secrets:generate-keys" # generates app secrets
-docker exec ibexa-php /bin/bash -c "cd /app;composer req predis/predis" # installs predis
 docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # finalizes the setup
 ```
 
 ## Accessing the site
 
-http://localhost:8080
+Frontend: [http://localhost:8080](http://localhost:8080)
+Backend: [http://localhost:8080/admin/login](http://localhost:8080/admin/login)
+The default credentials are username `admin` and password `publish`.
 
 ## Whats included
 
