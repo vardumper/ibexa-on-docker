@@ -14,6 +14,8 @@ RUN wget -nv https://pecl.php.net/get/redis-5.3.7.tgz \
     && make install
 RUN echo "extension=redis.so" >> /opt/bitnami/php/etc/php.ini
 
+WORKDIR /app
+
 # Install Composer
 FROM composer:latest AS comp
 COPY --from=comp /usr/bin/composer /usr/local/bin/composer
