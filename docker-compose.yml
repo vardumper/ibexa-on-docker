@@ -69,6 +69,7 @@ services:
 
   ### elastic
   elasticsearch:
+    container_name: ibexa-elasticsearch
     image: docker.io/bitnami/elasticsearch:8
     ports:
       - '9200:9200'
