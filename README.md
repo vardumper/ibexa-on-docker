@@ -7,6 +7,7 @@ The official Ibexa meta package installation is executed during install. Ibexa w
 
 - Docker installed and running
 - Composer installed
+- NodeJs and Yarn installed (`npm install --global yarn`)
 
 ## Getting started
 
