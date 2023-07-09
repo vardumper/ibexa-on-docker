@@ -6,6 +6,9 @@ name = "shell"
 [[analyzers]]
 name = "docker"
 
+  [analyzers.meta]
+  dockerfile_paths = ["docker/**/Dockerfile"]
+
 [[analyzers]]
 name = "php"
 
