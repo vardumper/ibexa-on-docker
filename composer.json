@@ -31,6 +31,7 @@
       "@php -r \"copy('config/cache.yaml', 'app/config/packages/cache.yaml');\"",
       "@php -r \"copy('config/services.yaml', 'app/config/services.yaml');\"",
       "@php -r \"unlink('config/cache.yaml');\"",
+      "@php -r \"unlink('config/services.yaml');\"",
       "@php -r \"rmdir('config');\"",
       "@php -r \"copy('.env.dev', 'app/.env');\"",
       "@php -r \"unlink('.env.dev');\"",
