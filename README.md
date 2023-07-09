@@ -5,9 +5,9 @@ The official Ibexa meta package installation is executed during install. Ibexa w
 
 ## Requirements
 
-- Docker installed and running (`brew install --cask docker`)
-- Composer installed (`brew install node`)
-- NodeJs (`brew install node`) and Yarn installed (`npm install --global yarn`)
+- **Docker** installed and running (`brew install --cask docker`)
+- **Composer** installed (`brew install node`)
+- **Node** (`brew install node`) and **Yarn** installed (`npm install --global yarn`)
 
 ## Getting started
 
