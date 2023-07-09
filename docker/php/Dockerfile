@@ -2,8 +2,8 @@ FROM docker.io/bitnami/php-fpm:8.2.8
 
 ENV PHP_MEMORY_LIMIT="512M"
 
-RUN apt update && apt upgrade -y
-RUN apt install --no-install-recommends wget unzip nano ${PHPIZE_DEPS} make cmake gcc g++ libpcre2-posix2 libpcre2-dev -yq
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install --no-install-recommends wget unzip nano "${PHPIZE_DEPS}" make cmake gcc g++ libpcre2-posix2 libpcre2-dev -yq
 
 # Haven't figured out the Redis part yet
 # ...
