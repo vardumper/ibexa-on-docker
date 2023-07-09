@@ -13,8 +13,8 @@ The official Ibexa meta package installation is executed during install. Ibexa w
 During installation, you will be prompted to enter your Ibexa credentials. You can get them in Ibexa's [support panel](https://support.ibexa.co).
 The official documentation has [more details on credentials](https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials).
 
-- Recommended option: Store your Ibexa credentials globally `composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>`
-- Alternatively, edit the auth.dist.json and save it as auth.json
+Store your Ibexa credentials globally `composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>`
+You will need to repeat this step (see below) inside the PHP container, so that composer can install additional dependencies or fetch updates.
 
 ## Installation
 
@@ -32,8 +32,9 @@ composer create-project vardumper/ibexa-on-docker:dev-content <my-folder> # Inst
 ```bash
 cd <my-folder> # change into the project folder
 docker-compose up -d # this will start the containers
-docker exec ibexa-php /bin/bash -c "cd /app;php bin/console secrets:generate-keys" # generates app secrets
-docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # finalizes the setup
+docker exec ibexa-php /bin/bash -c "cd /app;composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>" # stored credentials in php container
+docker exec ibexa-php /bin/bash -c "cd /app;composer req predis/predis" # add required package for redis
+docker exec ibexa-php /bin/bash -c "cd /app;php bin/console ibexa:install" # initialize database, run migrations, finalize setup
 ```
 
 ## Accessing the site
