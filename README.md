@@ -14,7 +14,7 @@ The official Ibexa meta package installation is executed during install. Ibexa w
 During installation, you will be prompted to enter your Ibexa credentials. You can get them in Ibexa's [support panel](https://support.ibexa.co).
 The official documentation has [more details on credentials](https://doc.ibexa.co/en/latest/getting_started/requirements/#ibexa-dxp-credentials).
 
-Store your Ibexa credentials globally `composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>`
+Store your Ibexa credentials globally `composer config --global http-basic.updates.ibexa.co <installation-key> <token-password>`.
 You will need to repeat this step (see below) inside the PHP container, so that composer can install additional dependencies or fetch updates.
 
 ## Installation
