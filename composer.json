@@ -37,7 +37,7 @@
       "@php -r \"unlink('.env.dev');\"",
       "@php -r \"unlink('composer.json');\"",
       "@php -r \"unlink('composer.lock');\"",
-      "cd app && git init"
+      "git init"
     ],
     "post-create-project-cmd": [
       "@install-ibexa"

@@ -1,14 +1,16 @@
-version: '3.3'
+version: '3'
 
 services:
   php:
     container_name: ibexa-php
-    image: bitnami/php-fpm:8.2.7
+    image: bitnami/php-fpm:8.2.8
     build: ./docker/php
     networks:
       - ibexa
     depends_on:
       - database
+      - redis
+      - elasticsearch
     volumes:
       - ./app:/app
       - ./docker/php/override.ini:/opt/bitnami/php/etc/conf.d/override.ini
