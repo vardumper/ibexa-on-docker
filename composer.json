@@ -22,8 +22,8 @@
   "scripts": {
     "install-ibexa": [
       "COMPOSER_PROCESS_TIMEOUT=600 COMPOSER_POOL_OPTIMIZER=0 COMPOSER_MEMORY_LIMIT=-1 composer create-project --prefer-dist ibexa/oss-skeleton app",
-      "@php -r \"file_exists('app/docker-compose.yml') || unlink('app/docker-compose.yml');\"",
-      "@php -r \"file_exists('app/docker-compose.override.yml') || unlink('app/docker-compose.override.yml');\"",
+      "@php -r \"file_exists('app/compose.yaml') || unlink('app/compose.yaml');\"",
+      "@php -r \"file_exists('app/compose.override.yaml') || unlink('app/compose.override.yaml');\"",
       "@php -r \"(file_exists('app/auth.json') && !file_exists('auth.json')) ?: copy('auth.json', 'app/auth.json');\"",
       "@php -r \"copy('app/.env', 'app/env.backup');\"",
       "@php -r \"unlink('app/.env');\"",
